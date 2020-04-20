@@ -1,0 +1,9 @@
+{
+  "signChannel":"SIGN_COMMAND_CHANNEL _ID",
+  "signCommand":"!sign-roe",
+  "signRequiredRoles":["ROLE_REQUIRED_ID"],
+  "discordToken":"BOT_TOKEN",
+  "rulesMap":{"en":"RULE_MESSAGE_ID","ru":"RULE_MESSAGE_ID","fr":"RULE_MESSAGE_ID","de":"RULE_MESSAGE_ID"},
+  "rulesChannel":"RULE_CHANNEL_ID",
+  "serverPort":8080
+}
