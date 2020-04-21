@@ -3,44 +3,25 @@ const discordClient = new discordjs.Client();
 const config = require("./config.json");
 
 const dc = require("./discord-utils");
-const datastatus = require("./datastatus");
+
+const fs = require("fs");
+const path = require("path");
+
+const basePath = path.join(__dirname,"discord_modules")
+const modules = fs.readdirSync(basePath);
 
 
 discordClient.on("ready",()=>{
   console.log("Discord-Bot is ready!");
 });
 
-discordClient.on("message", (message) => {
-  if(message.channel.id == config.signChannel){
-    if(message.content == config.signCommand){
-      if(message.author && message.guild){
-        const member = message.guild.member(message.author);
-        if(member && dc.hasRoles(member,config.signRequiredRoles)){
-          
-          const tag = dc.getAllianceTag(member);
-          if(tag.length){
-            const toSet = !datastatus.signer.signerExist(tag);
-            if(toSet)
-              datastatus.signer.addSigner(tag);
-            else
-              datastatus.signer.removeSigner(tag);
-            dc.sendStatusReport(message.channel,"Your alliance ("+tag+") "+(toSet?"signed":"is no longer signing")+" the ROE-Ruleset!");//TODO
-
-            console.log(tag,(toSet?"signed":"unsigned"),"to ROE!");
-          }else{
-            dc.sendError(message.channel,"Invalid Alliance-Tag Role. Please ask a moderator for help!");
-          }
-        }else{
-          dc.sendError(message.channel,"You are not permitted to use this command!");
-        }
-      }
-    }
-  }
+modules.forEach((modFileName)=>{
+  require(path.join(basePath,modFileName))(discordClient);
+  console.log("Initiated",modFileName,"module!");
 });
 
 discordClient.login(config.discordToken);
 
-//discordClient.on("")
 
 //Register Rule-Message change Listener
 

@@ -8,7 +8,8 @@ const path = require("path");
 const markoExpress = require("marko/express");
 const homepage = require("./templates/homepage.marko.js");
 
-const dataStatus = require("./datastatus");
+const discord = require("./discord");
+const dataStatus = require("./datastatus.js")._setDiscord(discord);
 
 const app = express();
 

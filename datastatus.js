@@ -4,7 +4,9 @@ const dataPath = path.join(__dirname,"data");
 const signerListPath = path.join(dataPath,"signerlist.json");
 const rulesetCachePath = path.join(dataPath,"rulesetcache.json");
 
-const discord = require("./discord");
+//const discord = require("./discord");
+let discord;
+
 
 const DEFAULT_LANG = "en";
 const RULESET_UPDATE_INTERVAL = 24*60*60*1000;
@@ -82,10 +84,14 @@ const ruleset = {
   _writeFile(){
     _writeFile(rulesetCachePath,rulesetCache);
   }
-};  
-
-
-module.exports = {
-  signer,
-  ruleset
 };
+
+const exp = {
+  signer,
+  ruleset,
+  _setDiscord(_discord){
+    discord = _discord;
+    return exp;
+  }
+};
+module.exports = exp;

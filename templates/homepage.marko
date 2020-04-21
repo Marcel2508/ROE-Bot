@@ -22,20 +22,67 @@
       padding:10px;
       font-weight:bold;
     }
+
+    .dc-link{
+      margin: 0 auto;
+      width:300px;
+      cursor:pointer;
+      display:block;
+    }
+
+    .center{
+      text-align:center;
+    }
+
+    .disclaimer{
+      color: #97BBB9;
+      font-size:10px;
+    }
+    
+    .allianceTag{
+      float:left;
+      padding:10px;
+    }
+    .allianceTag .icon{
+      float:left;
+      height:20px;
+    }
+
+    .allianceTag .tag{
+      font-size:18px;
+      line-height:20px;
+      display:block;
+      float:left;
+      margin-left:5px;
+    }
+
+    .cb{
+      clear:both;
+    }
+
   </style>
 </head>
 <body>
   <div class="container">
-    <h3>This are the Rules of engagement on server 164!</h3>
+    <h3>This are the Rules of Engagement on server 164!</h3>
     <br/>
     $!{data.rules}
     <br/><br/><br/>
     <b>This rules have been accepted by the following alliances:</b><br/>
     <for|tag,index| of=data.signers>
-      <span class="signer">${tag}</span>
+      <div class="allianceTag">
+        <img class="icon" src="/ship-icon.png">
+        <div class="tag">${tag}</div>
+      </div>
     </for>
+    <div class="cb"></div>
     <br/><br/>
-    <div style="text-align:center; position:absolute;bottom:0px;width:100%;left:0px;">Made with &lt;3 by Marcel2508. Early alpha stage! More coming soon... &nbsp;|&nbsp;<a href="/impress.html" target="_blank">Impress/GDPR</a></div>
+    <div class="center" style="margin-top:100px;">Join our Discord-Server to show your support for this rules & help make our server better!</div>
+    <a href="https://discordapp.com/invite/RVMkRDM" class="dc-link">
+      <img src="/discord-logo.svg" style="width:100%;">
+    </a>
+    <div style="margin-top:100px;" class="center">Made with &lt;3 by Marcel2508. Early alpha stage! More coming soon... &nbsp;|&nbsp;<a href="/impress.html" target="_blank">Impress/GDPR</a></div>
+    <div class="disclaimer center">The owner of this website is not affiliated, associated, authorised, endorsed by, or in any way connected with Scopely, CBS Studios, Digit, Paramount Pictures, or any of their subsidiaries or affiliates.</div>
   </div>
 </body>
 </html>
