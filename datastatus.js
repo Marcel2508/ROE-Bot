@@ -14,7 +14,7 @@ const RULESET_UPDATE_INTERVAL = 24*60*60*1000;
 if(!fs.existsSync(dataPath))fs.mkdirSync(dataPath);
 
 const signerList = fs.existsSync(signerListPath)?JSON.parse(fs.readFileSync(signerListPath)):[];
-const rulesetCache = fs.existsSync(rulesetCachePath)?JSON.parse(fs.readFileSync(rulesetCachePath)):{};
+const rulesetCache = fs.existsSync(rulesetCachePath)?JSON.parse(fs.readFileSync(rulesetCachePath)):{data:{}};
 
 function _writeFile(filepath,data){
   fs.writeFile(filepath,JSON.stringify(data),(err)=>{
